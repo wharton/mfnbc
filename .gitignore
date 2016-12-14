@@ -1,0 +1,10 @@
+*.csv
+!likelihoods.csv
+!bicycles.csv
+build/
+dist/
+mfnbc.egg-info/
+__pycache__/
+*.pyc
+
+
