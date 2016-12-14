@@ -6,5 +6,5 @@ dist/
 mfnbc.egg-info/
 __pycache__/
 *.pyc
-
+*.zip
 
