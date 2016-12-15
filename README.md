@@ -116,7 +116,7 @@ You can also print the probability table by
 m.print_probs
 ```
 
-###Exmaple Results
+###Example Results
 
 <table style="border-collapse: collapse; width: 460pt;" border="1" width="348" cellspacing="0" cellpadding="0">
 <colgroup>
