@@ -2,7 +2,7 @@
 from setuptools import setup
 setup(
     name='mfnbc',
-    version='0.7',
+    version='0.92',
     license='The MIT License (MIT)',
     author="Shawn",
     author_email='shawnzam@gmail.com',
