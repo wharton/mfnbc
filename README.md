@@ -62,7 +62,6 @@ The key is having the header titled  `Text` any other fields will be included un
 <colgroup>
 <col style="width: 65pt;" span="4" width="87" /> </colgroup>
 <tbody>
-<tbody>
 <tr>
 <td width="87">ID</td>
 <td width="356"><strong>Text</strong></td>
@@ -116,4 +115,62 @@ You can also print the probability table by
 ```python
 m.print_probs
 ```
+
+###Exmaple Results
+
+<table style="border-collapse: collapse; width: 460pt;" border="1" width="348" cellspacing="0" cellpadding="0">
+<colgroup>
+<col style="width: 65pt;" span="4" width="87" /> </colgroup>
+<tbody>
+<tr style="height: 16.0pt;">
+<td style="height: 16.0pt; width: 65pt;" width="87" height="21">ID</td>
+<td style="width: 65pt;" width="87">reviewText</td>
+<td style="width: 65pt;" width="87">Animal</td>
+<td style="width: 65pt;" width="87">Human</td>
+<td style="width: 65pt;" width="87">Plant</td>
+</tr>
+<tr style="height: 16.0pt;">
+<td style="height: 16.0pt;" align="right" height="21">1</td>
+<td>The cat is my pet and he is lovley. A dog will not do.</td>
+<td align="right">0.972321429</td>
+<td align="right">0.005357143</td>
+<td align="right">0.022321429</td>
+</tr>
+<tr style="height: 16.0pt;">
+<td style="height: 16.0pt;" align="right" height="21">2</td>
+<td>The man and women had a cat and lived under a tree</td>
+<td align="right">0.580787094</td>
+<td align="right">0.2969934</td>
+<td align="right">0.122219506</td>
+</tr>
+<tr style="height: 16.0pt;">
+<td style="height: 16.0pt;" align="right" height="21">3</td>
+<td>The tree had lots of leaves</td>
+<td align="right">0.01532802</td>
+<td align="right">0.003678725</td>
+<td align="right">0.980993256</td>
+</tr>
+<tr style="height: 16.0pt;">
+<td style="height: 16.0pt;" align="right" height="21">4</td>
+<td>A man lives under a tree with many leaves. A women has a cat as a pet</td>
+<td align="right">0.334412386</td>
+<td align="right">0.1026038</td>
+<td align="right">0.562983814</td>
+</tr>
+<tr style="height: 16.0pt;">
+<td style="height: 16.0pt;" align="right" height="21">5</td>
+<td>The dog and cat chanse the man under the tree</td>
+<td align="right">0.921839729</td>
+<td align="right">0.00761851</td>
+<td align="right">0.070541761</td>
+</tr>
+<tr style="height: 16.0pt;">
+<td style="height: 16.0pt;" align="right" height="21">6</td>
+<td>The man and women live in a house.</td>
+<td align="right">0.065633546</td>
+<td align="right">0.922971741</td>
+<td align="right">0.011394713</td>
+</tr>
+</tbody>
+</table>
 
