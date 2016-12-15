@@ -85,5 +85,5 @@ class MFNBC:
                     writer.writerow(row)
 
 
-m = MFNBC('likeli_sample.csv', 'input_sample.csv', False)
-m.print_probs()
+# m = MFNBC('likeli_sample.csv', 'input_sample.csv', False)
+# m.print_probs()
