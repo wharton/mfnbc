@@ -1,5 +1,11 @@
 # MFNBC
 
+###Install
+
+```
+pip install mfnbc
+```
+
 ###Setup (Likeihood Input File)
 It is assumed you have a word based likelihood table (csv file) where the headers consists of the literal word `Word` and the remaining columns are the features you would like to classify. 
 

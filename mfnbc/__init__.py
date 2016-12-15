@@ -73,7 +73,7 @@ class MFNBC:
                             res = num / den
                             self.posteriors[f] = res
                 for key, pos in self.posteriors.items():
-                    print("Final Postierors{} - {}".format(key, pos)
+                    print("Current Posteriors {} - {}".format(key, pos)
                           ) if self.verbose else None
                     row[key] = pos
                 fieldnames = reader.fieldnames + self.features
