@@ -2,14 +2,11 @@ import nltk
 import csv
 import os
 
-def foo(bar):
-    print(bar)
 
 class MFNBC:
-    """docstring for MFNBC"""
+    """A Multi-Function Naive Bayes Classifier"""
 
     def __init__(self, likelihoods_input_file, unlabeled_data_file, verbose):
-        # super(MFNBC, self).__init__()
         print("MFNBC")
         self.likelihoods_input_file = likelihoods_input_file
         self.unlabeled_data_file = unlabeled_data_file
@@ -45,7 +42,8 @@ class MFNBC:
         return den
 
     def process_unlabeled(self):
-        with open(self.unlabeled_data_file, 'r', encoding='ISO-8859-1') as csvfile:
+        with open(self.unlabeled_data_file,
+                  'r', encoding='ISO-8859-1') as csvfile:
             reader = csv.DictReader(csvfile)
             for i, row in enumerate(reader):
                 if i % 10 == 0:
@@ -58,7 +56,8 @@ class MFNBC:
                     lowered_tok = tok.lower()
                     if lowered_tok in self.probs:
                         prob_row = self.probs[lowered_tok]
-                        den = self.denuminator(self.posteriors, prob_row, self.features)
+                        den = self.denuminator(
+                            self.posteriors, prob_row, self.features)
                         for f in self.features:
                             num = (self.posteriors[f] * float(prob_row[f]))
                             res = num / den
