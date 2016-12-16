@@ -1,5 +1,6 @@
 language: python
 python:
+  - "3.3"
   - "3.4"
   # PyPy versions
   - "pypy3" # Pypy3 2.4.0
