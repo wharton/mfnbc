@@ -1,16 +1,12 @@
 language: python
 python:
-  - "3.2"
-  - "3.3"
   - "3.4"
   # PyPy versions
-  - "pypy"
-  - "pypy"  # PyPy2 2.5.0
   - "pypy3" # Pypy3 2.4.0
-  - "pypy-5.3.1"
+
 # command to install dependencies
 install:
   - pip install nltk
   - pip install mfnbc
 # command to run tests
-script: pwd && ls -la && python test/test_mfnbc.py
+script: python test/test_mfnbc.py
