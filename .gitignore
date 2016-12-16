@@ -1,6 +1,6 @@
 *.csv
-!likelihoods.csv
-!bicycles.csv
+!input_sample.csv
+!likeli_sample.csv
 build/
 dist/
 mfnbc.egg-info/
