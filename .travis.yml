@@ -13,4 +13,4 @@ install:
   - pip install nltk
   - pip install mfnbc
 # command to run tests
-script: python test/test_mfnbc.py
+script: pdw && ls -la && python test/test_mfnbc.py
