@@ -10,6 +10,7 @@ python:
   - "pypy-5.3.1"
 # command to install dependencies
 install:
+  - pip install nltk
   - pip install mfnbc
 # command to run tests
 script: python test/test_mfnbc.py
