@@ -7,7 +7,7 @@ pip install mfnbc
 ```
 
 ###Setup (Likeihood Input File)
-It is assumed you have a word based likelihood table (csv file) where the headers consists of the literal word `Word` and the remaining columns are the features you would like to classify. 
+It is assumed you have a word based likelihood table (csv file) where the headers consists of the literal word `Word` and the remaining columns are the features you would like to classify.
 
 For example:
 
@@ -119,7 +119,7 @@ m.write_csv()
 You can also print the probability table by
 
 ```python
-m.print_probs
+m.probs
 ```
 
 ###Example Results
