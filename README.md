@@ -1,5 +1,8 @@
 # MFNBC
 
+###Requiremnts
+Python >= 3.3
+
 ###Install
 
 ```
