@@ -1,16 +1,22 @@
-# MFNBC
+MFNBC
+=====
 
-###Requiremnts
+Requiremnts
+~~~~~~~~~~~
+
 Python >= 3.3
 
-###Install
+Install
+~~~~~~~
 
-```
-pip install mfnbc
-```
+``pip install mfnbc``
 
-###Setup (Likeihood Input File)
-It is assumed you have a word based likelihood table (csv file) where the headers consists of the literal word `Word` and the remaining columns are the features you would like to classify.
+Setup (Likeihood Input File)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+It is assumed you have a word based likelihood table (csv file) where
+the headers consists of the literal word ``Word`` and the remaining
+columns are the features you would like to classify.
 
 For example:
 
@@ -30,10 +36,8 @@ For example:
 | women    | 0.12     | 0.45    | 0.05    |
 +----------+----------+---------+---------+
 
-
-###Setup (Unlabeled Data File)
-The key is having the header titled  `Text` any other fields will be included unmodified in the output file.
-
+Setup (Unlabeled Data File)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 +----+-----------------------------------------------------------------------+
 | ID | Text                                                                  |
@@ -51,30 +55,42 @@ The key is having the header titled  `Text` any other fields will be included un
 | 6  | The man and women live in a house.                                    |
 +----+-----------------------------------------------------------------------+
 
-###Import
+The key is having the header titled ``Text`` any other fields will be
+included unmodified in the output file.
 
-```python
-from mfnbc import MFNBC
-```
-### Instantiate
 
-```python
-m = MFNBC(<likelihoods_input_file - location of Likelihood table (str)>,
-          <unlabeled_data_file - Location of unlabeled data file (str)>,
-          <verbose output - Turn on of off verbose output, default: off>
-```
-###Example
-```python
-m = MFNBC('likeli_sample.csv', 'input_sample.csv', False)
-m.write_csv()
-```
+Import
+~~~~~~
+
+.. code:: python
+
+    from mfnbc import MFNBC
+
+Instantiate
+~~~~~~~~~~~
+
+.. code-block:: python
+
+    m = MFNBC(<likelihoods_input_file - location of Likelihood table (str)>,
+              <unlabeled_data_file - Location of unlabeled data file (str)>,
+              <verbose output - Turn on of off verbose output, default: off>
+
+Example
+~~~~~~~
+
+.. code:: python
+
+    m = MFNBC('likeli_sample.csv', 'input_sample.csv', False)
+    m.write_csv()
+
 You can also print the probability table by
 
-```python
-m.probs
-```
+.. code:: python
 
-###Example Results
+    m.probs
+
+Example Results
+~~~~~~~~~~~~~~~
 
 +----+-----------------------------------------------------------------------+-------------+-------------+-------------+
 | ID | Text                                                                  | Animal      | Human       | Plant       |
@@ -91,4 +107,5 @@ m.probs
 +----+-----------------------------------------------------------------------+-------------+-------------+-------------+
 | 6  | The man and women live in a house.                                    | 0.065633546 | 0.922971741 | 0.011394713 |
 +----+-----------------------------------------------------------------------+-------------+-------------+-------------+
+
 

@@ -69,12 +69,9 @@ class MFNBC:
                 for tok in tokens:
                     lowered_tok = tok.lower()
                     if lowered_tok in self.probs:
-                        print("tok, den")
                         prob_row = self.probs[lowered_tok]
                         den = self._calc_denuminator(
                             self.posteriors, prob_row, self.features)
-
-                        print(tok, den)
                         for f in self.features:
                             num = (self.posteriors[f] * float(prob_row[f]))
                             res = num / den
