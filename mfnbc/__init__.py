@@ -6,7 +6,8 @@ import os
 class MFNBC:
     """A Multi-Function Naive Bayes Classifier"""
 
-    def __init__(self, likelihoods_input_file, unlabeled_data_file, verbose):
+    def __init__(self, likelihoods_input_file, unlabeled_data_file,
+                 verbose, output_filename='out.csv'):
         """
             Args:
                 likelihoods_input_file - location of Likelyhood table (str)
@@ -18,25 +19,52 @@ class MFNBC:
         """
         self.likelihoods_input_file = likelihoods_input_file
         self.unlabeled_data_file = unlabeled_data_file
+        self.outfile = output_filename
         self.verbose = verbose
         self.probs = {}
         self.posteriors = {}
+        self.results = []
         self.features = []
-        self.outfile = 'out_{}'.format(self.unlabeled_data_file)
+        self.fieldnames = None
+        # self.outfile = '{}'.format(self.unlabeled_data_file)
+
+    def calc_posteriors(self):
+        """
+        A Public function calculate the postiros for a list of texts
+        """
+        if len(self.probs.items()) == 0:
+            self.read_likelihoods()
+        return self._process_unlabeled()
+
 
     def write_csv(self):
-        self._read_likelihoods()
-        self._process_unlabeled()
-        print("wrote {}".format(self.outfile))
-
-    def print_probs(self):
+        print("Writing CSV file: {}".format(self.outfile))
+        """
+        A Public function to write the CSV
+                Args: self
+        Returns:
+            None
+        # """
         if len(self.probs.items()) == 0:
-            self._read_likelihoods()
-        print(self.probs)
+            self.read_likelihoods()
+            self.calc_posteriors()
+        for row in self.results:
+            file_exists = os.path.isfile(self.outfile)
+            with open(self.outfile, 'w', encoding='ISO-8859-1') as csvfile:
+                writer = csv.DictWriter(csvfile, fieldnames=self.fieldnames)
+                if not file_exists:
+                    writer.writeheader()
+                writer.writerow(row)
+        print("Finished writing: {}".format(self.outfile))
+
+    def print_likelyhoods(self):
+        if len(self.probs.items()) == 0:
+            self.read_likelihoods()
         for k, v in self.probs.items():
             print("Word: {} | Likelihoods: {}".format(k, v))
 
-    def _read_likelihoods(self):
+    def read_likelihoods(self):
+        print("Reading Likelihoods")
         with open(self.likelihoods_input_file,
                   'r', encoding='ISO-8859-1') as csvfile:
             reader = csv.DictReader(csvfile)
@@ -45,50 +73,50 @@ class MFNBC:
             self.features = reader.fieldnames
             self.features.remove('Word')
             for f in self.features:
-                    self.posteriors[f] = 1 / len(self.features)
-            self.print_probs() if self.verbose else None
+                self.posteriors[f] = 1 / len(self.features)
+            self.print_likelyhoods() if self.verbose else None
+        return self.probs
 
-    def _calc_denuminator(self, posteriors, prob_row, features):
+    def _calc_denominator(self, prob_row):
         den = 0
         for f in self.features:
-            den += (posteriors[f] * float(prob_row[f]))
+            den += (self.posteriors[f] * float(prob_row[f]))
         return den
 
-    def fooz(self):
-        1 + 1
-
     def _process_unlabeled(self):
+        print("Processing Unlabeled Texts...")
         with open(self.unlabeled_data_file,
                   'r', encoding='ISO-8859-1') as csvfile:
             reader = csv.DictReader(csvfile)
-            for i, row in enumerate(reader):
-                if i % 10 == 0:
-                    print(i) if self.verbose else None
-                sen = row['Text']
-                tokens = nltk.word_tokenize(sen)
+            if not self.fieldnames:
+                self.fieldnames = reader.fieldnames + self.features
+            for index, row in enumerate(reader):
+                for f in self.features:
+                    self.posteriors[f] = 1 / len(self.features)
+                if index % 10 == 0 and index > 1:
+                    print("Completed {} texts".format(index))
+                text = row['Text']
+                tokens = nltk.word_tokenize(text)
                 for tok in tokens:
                     lowered_tok = tok.lower()
                     if lowered_tok in self.probs:
                         prob_row = self.probs[lowered_tok]
-                        den = self._calc_denuminator(
-                            self.posteriors, prob_row, self.features)
+                        denominator = self._calc_denominator(prob_row)
                         for f in self.features:
                             num = (self.posteriors[f] * float(prob_row[f]))
-                            res = num / den
+                            res = num / denominator
                             self.posteriors[f] = res
                 for key, pos in self.posteriors.items():
                     print("Current Posteriors {} - {}".format(key, pos)
                           ) if self.verbose else None
                     row[key] = pos
-                fieldnames = reader.fieldnames + self.features
-                file_exists = os.path.isfile(self.outfile)
-                with open(self.outfile, 'a', encoding='ISO-8859-1') as csvfile:
-                    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                    if not file_exists:
-                        writer.writeheader()
-                    writer.writerow(row)
+                self.results.append(row)
+        return self.results
 
 
-# m = MFNBC('likeli_sample.csv', 'input_sample.csv', False)
-# m._read_likelihoods()
-# m._process_unlabeled()
+m = MFNBC('sample_files/likeli_sample.csv',
+          'sample_files/input_sample.csv', False).write_csv()
+# m.read_likelihoods()
+# x = m.calc_posteriors()
+# # print(x)
+# m.write_csv()

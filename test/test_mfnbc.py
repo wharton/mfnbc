@@ -12,17 +12,20 @@ PROBS = {
 
 class TestMFNBC(unittest.TestCase):
 
+    L_HOOD_FILE = 'sample_files/likeli_sample.csv'
+    UNLABELED_FILE = 'sample_files/likeli_sample.csv'
+
     def test_print_probs(self):
-        m = MFNBC('sample_files/likeli_sample.csv', 'sample_files/input_sample.csv', False)
+        m = MFNBC(self.L_HOOD_FILE, self.UNLABELED_FILE, False)
         self.assertNotEqual(m.print_probs(), '')
 
     def test_read_likelihoods(self):
-        d = MFNBC('sample_files/likeli_sample.csv', 'sample_files/input_sample.csv', False)
+        d = MFNBC(self.L_HOOD_FILE, self.UNLABELED_FILE, False)
         d._read_likelihoods()
         self.assertEqual(PROBS, PROBS)
 
     def test_calc_denuminator(self):
-        m = MFNBC('sample_files/likeli_sample.csv', 'sample_files/input_sample.csv', False)
+        m = MFNBC(self.L_HOOD_FILE, self.UNLABELED_FILE, False)
         m._read_likelihoods()
         den = m._calc_denuminator(m.posteriors, m.probs['cat'], m.features)
         self.assertEqual(den, 0.13666666666666666)

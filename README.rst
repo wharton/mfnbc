@@ -1,8 +1,27 @@
 MFNBC
 =====
 
-Requiremnts
-~~~~~~~~~~~
+About The Maths
+~~~~~~~~~~~~~~~
+This package computes a set of simple arithmetic to calculate the final posterior probabilities for a set of features over a set of texts within a corpus.
+
+So for each text in the corpus, the package looks to see if the word in contained in the provided likelihood table. If it is found, the posterior probabilities for each feature is updated as using `Bayesian statistics
+<https://en.wikipedia.org/wiki/Posterior_probability>`_.
+
+
+
+.. math::
+
+    p(<feature> \mid <word>)={\frac {p(<feature>) * p(<word> \mid <feature>)}{p(\theta)}}
+
+where :math:`p(\theta)` is:
+
+.. math::
+
+    $$\sum_{n=1}^{<features_count>} p(<word> \mid <nth_feature>) * p(<nth_feature>)
+
+Requirements
+~~~~~~~~~~~~
 
 Python >= 3.3
 
@@ -11,8 +30,8 @@ Install
 
 ``pip install mfnbc``
 
-Setup (Likeihood Input File)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Setup (Likelihood Input File)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 It is assumed you have a word based likelihood table (csv file) where
 the headers consists of the literal word ``Word`` and the remaining
@@ -42,7 +61,7 @@ Setup (Unlabeled Data File)
 +----+-----------------------------------------------------------------------+
 | ID | Text                                                                  |
 +----+-----------------------------------------------------------------------+
-| 1  | The cat is my pet and he is lovley. A dog will not do.                |
+| 1  | The cat is my pet and he is lovely. A dog will not do.                |
 +----+-----------------------------------------------------------------------+
 | 2  | The man and women had a cat and lived under a tree                    |
 +----+-----------------------------------------------------------------------+
@@ -50,7 +69,7 @@ Setup (Unlabeled Data File)
 +----+-----------------------------------------------------------------------+
 | 4  | A man lives under a tree with many leaves. A women has a cat as a pet |
 +----+-----------------------------------------------------------------------+
-| 5  | The dog and cat chanse the man under the tree                         |
+| 5  | The dog and cat chase the man under the tree                          |
 +----+-----------------------------------------------------------------------+
 | 6  | The man and women live in a house.                                    |
 +----+-----------------------------------------------------------------------+
@@ -81,13 +100,16 @@ Example
 .. code:: python
 
     m = MFNBC('likeli_sample.csv', 'input_sample.csv', False)
+    m.read_likelihoods()
+    m.calc_posteriors()
     m.write_csv()
 
-You can also print the probability table by
+or you can do it all in a single command
 
 .. code:: python
 
-    m.probs
+    m = MFNBC('likeli_sample.csv', 'input_sample.csv', False).write_csv()
+
 
 Example Results
 ~~~~~~~~~~~~~~~
@@ -95,7 +117,7 @@ Example Results
 +----+-----------------------------------------------------------------------+-------------+-------------+-------------+
 | ID | Text                                                                  | Animal      | Human       | Plant       |
 +----+-----------------------------------------------------------------------+-------------+-------------+-------------+
-| 1  | The cat is my pet and he is lovley. A dog will not do.                | 0.972321429 | 0.005357143 | 0.022321429 |
+| 1  | The cat is my pet and he is lovely. A dog will not do.                | 0.972321429 | 0.005357143 | 0.022321429 |
 +----+-----------------------------------------------------------------------+-------------+-------------+-------------+
 | 2  | The man and women had a cat and lived under a tree                    | 0.580787094 | 0.2969934   | 0.122219506 |
 +----+-----------------------------------------------------------------------+-------------+-------------+-------------+
@@ -103,7 +125,7 @@ Example Results
 +----+-----------------------------------------------------------------------+-------------+-------------+-------------+
 | 4  | A man lives under a tree with many leaves. A women has a cat as a pet | 0.334412386 | 0.1026038   | 0.562983814 |
 +----+-----------------------------------------------------------------------+-------------+-------------+-------------+
-| 5  | The dog and cat chanse the man under the tree                         | 0.921839729 | 0.00761851  | 0.070541761 |
+| 5  | The dog and cat chase the man under the tree                         | 0.921839729 | 0.00761851  | 0.070541761  |
 +----+-----------------------------------------------------------------------+-------------+-------------+-------------+
 | 6  | The man and women live in a house.                                    | 0.065633546 | 0.922971741 | 0.011394713 |
 +----+-----------------------------------------------------------------------+-------------+-------------+-------------+
