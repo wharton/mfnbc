@@ -10,7 +10,7 @@ long_description = open('README.rst').read()
 
 setup(
     name='mfnbc',
-    version='1.96',
+    version='1.97',
     license='The MIT License (MIT)',
     author="Shawn",
     author_email='shawnzam@gmail.com',

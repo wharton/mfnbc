@@ -52,7 +52,7 @@ class MFNBC:
             self.calc_posteriors()
         for row in self.results:
             file_exists = os.path.isfile(self.outfile)
-            with open(self.outfile, 'w', encoding='ISO-8859-1') as csvfile:
+            with open(self.outfile, 'a', encoding='ISO-8859-1') as csvfile:
                 writer = csv.DictWriter(csvfile, fieldnames=self.fieldnames)
                 if not file_exists:
                     writer.writeheader()
