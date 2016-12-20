@@ -98,13 +98,14 @@ Instantiate
     m = MFNBC(<likelihoods_input_file - location of Likelihood table (str)>,
               <unlabeled_data_file - Location of unlabeled data file (str)>,
               <verbose output - Turn on of off verbose output, default: off>
+              <output file name - defaults to out.csv, (str)>
 
 Example
 ~~~~~~~
 
 .. code:: python
 
-    m = MFNBC('likeli_sample.csv', 'input_sample.csv', False)
+    m = MFNBC('likeli_sample.csv', 'input_sample.csv', False, 'my_output.csv')
     m.read_likelihoods()
     m.calc_posteriors()
     m.write_csv()
@@ -130,7 +131,7 @@ Example Results
 +----+-----------------------------------------------------------------------+-------------+-------------+-------------+
 | 4  | A man lives under a tree with many leaves. A women has a cat as a pet | 0.334412386 | 0.1026038   | 0.562983814 |
 +----+-----------------------------------------------------------------------+-------------+-------------+-------------+
-| 5  | The dog and cat chase the man under the tree                         | 0.921839729 | 0.00761851  | 0.070541761  |
+| 5  | The dog and cat chase the man under the tree                          | 0.921839729 | 0.00761851  | 0.070541761 |
 +----+-----------------------------------------------------------------------+-------------+-------------+-------------+
 | 6  | The man and women live in a house.                                    | 0.065633546 | 0.922971741 | 0.011394713 |
 +----+-----------------------------------------------------------------------+-------------+-------------+-------------+
