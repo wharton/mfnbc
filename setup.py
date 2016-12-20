@@ -10,14 +10,14 @@ long_description = open('README.rst').read()
 
 setup(
     name='mfnbc',
-    version='1.93',
+    version='1.94',
     license='The MIT License (MIT)',
     author="Shawn",
     author_email='shawnzam@gmail.com',
     url='https://github.com/shawnzam/mfnbc',
     packages=['mfnbc'],
     install_requires=['nltk>=3.2'],
-    keywords=['bayes'],
+    keywords=['bayes, nbc, likelihoods', 'posteriors'],
     zip_safe=False,
     long_description=long_description,
     classifiers=[

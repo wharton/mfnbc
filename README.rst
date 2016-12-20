@@ -1,8 +1,14 @@
 MFNBC
 =====
 
-About The Maths
-~~~~~~~~~~~~~~~
+Links
+~~~~~
+
+- PyPi - https://pypi.python.org/pypi/mfnbc/
+- Github - https://github.com/shawnzam/mfnbc
+
+About The Math
+~~~~~~~~~~~~~~
 This package computes a set of simple arithmetic to calculate the final posterior probabilities for a set of features over a set of texts within a corpus.
 
 So for each text in the corpus, the package looks to see if the word in contained in the provided likelihood table. If it is found, the posterior probabilities for each feature is updated as using `Bayesian statistics
