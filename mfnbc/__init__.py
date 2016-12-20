@@ -26,7 +26,9 @@ class MFNBC:
         self.results = []
         self.features = []
         self.fieldnames = None
-        # self.outfile = '{}'.format(self.unlabeled_data_file)
+        print("Checking if you have NLTK libs...")
+        nltk.download('punkt')
+
 
     def calc_posteriors(self):
         """
@@ -114,8 +116,8 @@ class MFNBC:
         return self.results
 
 
-m = MFNBC('sample_files/likeli_sample.csv',
-          'sample_files/input_sample.csv', False).write_csv()
+# m = MFNBC('sample_files/likeli_sample.csv',
+          # 'sample_files/input_sample.csv', False).write_csv()
 # m.read_likelihoods()
 # x = m.calc_posteriors()
 # # print(x)
