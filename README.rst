@@ -9,16 +9,15 @@ So for each text in the corpus, the package looks to see if the word in containe
 <https://en.wikipedia.org/wiki/Posterior_probability>`_.
 
 
+.. image:: https://research-it.wharton.upenn.edu/wp-content/uploads/2016/12/eq1.gif
 
-.. math::
+where
 
-    p(<feature> \mid <word>)={\frac {p(<feature>) * p(<word> \mid <feature>)}{p(\theta)}}
+.. image:: https://research-it.wharton.upenn.edu/wp-content/uploads/2016/12/eq2.gif
 
-where :math:`p(\theta)` is:
+is:
 
-.. math::
-
-    $$\sum_{n=1}^{<features_count>} p(<word> \mid <nth_feature>) * p(<nth_feature>)
+.. image:: https://research-it.wharton.upenn.edu/wp-content/uploads/2016/12/eq3.gif
 
 Requirements
 ~~~~~~~~~~~~
