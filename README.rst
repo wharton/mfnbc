@@ -5,7 +5,7 @@ Links
 ~~~~~
 
 - PyPi - https://pypi.python.org/pypi/mfnbc/
-- Github - https://github.com/shawnzam/mfnbc
+- Github - https://github.com/wharton/mfnbc
 
 About The Math
 ~~~~~~~~~~~~~~
