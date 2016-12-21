@@ -45,7 +45,7 @@ class MFNBC:
         A Public function to write the CSV
                 Args: self
         Returns:
-            None
+            None (Prints likelihoods)
         # """
         if len(self.probs.items()) == 0:
             self.read_likelihoods()
