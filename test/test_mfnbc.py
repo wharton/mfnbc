@@ -21,7 +21,6 @@ class TestMFNBC(unittest.TestCase):
 
     def test_read_likelihoods(self):
         d = MFNBC(self.L_HOOD_FILE, self.UNLABELED_FILE, False)
-        # d.read_likelihoods()
         self.assertEqual(d.read_likelihoods(), PROBS)
 
     def test_calc_denuminator(self):
