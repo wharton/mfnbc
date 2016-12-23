@@ -6,6 +6,7 @@ Links
 
 - PyPi - https://pypi.python.org/pypi/mfnbc/
 - Github - https://github.com/wharton/mfnbc
+- Blog post - https://research-it.wharton.upenn.edu/programming/naive-bayes-across-multiple-features/
 
 About The Math
 ~~~~~~~~~~~~~~
